@@ -4,7 +4,9 @@
       <w>appbar</w>
       <w>axios</w>
       <w>clearfix</w>
+      <w>fname</w>
       <w>highquality</w>
+      <w>isloading</w>
       <w>linkcls</w>
       <w>mymusic</w>
       <w>scroller</w>
