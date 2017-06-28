@@ -110,7 +110,5 @@
         overflow: hidden
         color: #000
         text-overflow: ellipsis
-    .mu-circle-spinner
-      border-color: #ce3d3e
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="playList" :class="{view: songList.length > 0}">
     <div class="fixed-title" :style="{'background':'rgba(206, 61, ' +
-      '62, '+ opacity +')'}" style="transition: opacity .1s">
+      '62, '+ opacity +')'}">
       <mu-appbar>
         <mu-icon-button icon='arrow_back' @click="back"
                         slot="left"/>
@@ -82,8 +82,9 @@
         if (parseInt(to.params.id) !== parseInt(vm.id)) {
           vm.get();
         }
-        // 判断过来的路由是否带有对应的参数信
+        // 判断过来的路由是否带有对应的参数信息
         if (to.params.coverImg) {
+          // 获取songList传入的数据
           vm.coverImgUrl = vm.$route.params.coverImg;
           vm.name = vm.$route.params.name;
           vm.description = vm.$route.params.desc;
@@ -179,30 +180,32 @@
     z-index: 15
     .mu-appbar
       background-color: transparent
-    .bar-line
-      display: block
-      bottom: 0
-      left: 0
-      width: 100%
-      background: radial-gradient(#d3d3d3 -90%, transparent 100%);
     .mu-paper-1
       box-shadow: none
       .mu-appbar-title
         text-align: left
 
+  .bar-line
+    display: block
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 0.05rem
+    background: radial-gradient(#ce3d3e -90%, transparent 100%);
+
   .playlist-info
     position: relative
+    padding: 60px .5rem 0
     width: 100%
-    height: 22rem
+    height: 10rem
     .info-wrapper
       position: relative
       z-index: 10
       color：#fff
       .info-gallery
-        position: absolute
-        top: 5rem
-        left: 1rem
-        width: 13rem
+        position: relative;
+        float: left;
+        width: 6rem;
         overflow: hidden
         span
           position: absolute
@@ -220,28 +223,47 @@
           max-width: 100%
           height: auto
       .info-title
-        position: absolute
-        right: 5rem
-        top: 5.5rem
-        width: 14rem
+        float: left;
+        width: 7.5rem;
+        margin-top: 0.5rem
+        margin-left: 1rem;
         color: #fff
-        font-size: 14px
-        margin-left: 1rem
         .title
           font-size: 16px
+          margin-bottom: 0.3rem
         .author
-          margin-top : 1rem
           img
             display: inline-block
           span
-            overflow: hidden
-            display: inline-block
-            height: 30px
-            text-overflow: ellipsis
-            width: 7rem
-            white-space: nowrap
-            vertival-align: top
-            line-height: 30px
+            overflow: hidden;
+            display: inline-block;
+            height: 30px;
+            text-overflow: ellipsis;
+            width: 5.4rem;
+            white-space: nowrap;
+            font-size: 14px;
+            vertical-align: top;
+            line-height: 30px;
+    .bg-mask
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: rgba(0, 0, 0, .35)
+      z-index: 2
+
+    .bg-player
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: bottom right
+      filter: blur(40px)
+      z-index: 1
 
   .playlist-holder
     position: relative
@@ -250,6 +272,7 @@
     .add-all
       padding-left: .4rem
 
+  // 列表样式
   .indexStyle
     padding-left: 10px
     font-size: 18px
@@ -257,30 +280,9 @@
 
   .mu-item-title
     white-space: nowrap
-    height: 1.7rem
+    height: .7rem
     overflow: hidden
     text-overflow: ellipsis
-
-  .bg-player
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: bottom right
-    filter: blur(40px)
-    z-index: 1
-
-  .bg-mask
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background-color: rgba(0, 0, 0, .35)
-    z-index: 2
 
   .center
     display: block !important
@@ -290,6 +292,5 @@
     width: 100%
     margin-bottom: 2.3rem
 
-  .mu-circle-spinner
-    border-color: #ce3d3e
+
 </style>

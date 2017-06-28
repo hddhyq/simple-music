@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Axios from 'axios';
+import api from '../api/index';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -43,7 +45,7 @@ const store = new Vuex.Store({
       return state.bufferedTime / state.durationTime * 100;
     }
   },
-  mutation: {
+  mutations: {
     play (state) {
       state.playing = true;
     },
@@ -132,7 +134,20 @@ const store = new Vuex.Store({
     setLrc (state, lrc) {
       state.lyric = lrc;
     }
+  },
+  // 异步的数据操作
+  actions: {
+    getSong ({commit, states}, id) {
+      commit('openLoading');
+      Axios.get(api.getSong(id)).then(res => {
+        var url = res.data.data[0].url;
+        commit('setAudio');
+        commit('setLocation', url);
+      }).catch((error) => {
+        console.log(error);
+        window.alert('获取歌曲信息错误');
+      });
+    }
   }
-
 });
 export default store;
