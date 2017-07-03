@@ -115,6 +115,13 @@ const store = new Vuex.Store({
       }
       state.audio = state.songList[state.currentIndex - 1];
     },
+    playPrev (state) { // 播放上一曲
+      state.currentIndex--;
+      if (state.currentIndex < 1) {
+        state.currentIndex = state.songList.length;
+      }
+      state.audio = state.songList[state.currentIndex - 1];
+    },
     addToList (state, songs) {
       var items = Array.prototype.concat.call(songs);
       items.forEach(item => {

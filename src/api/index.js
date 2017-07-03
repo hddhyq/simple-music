@@ -21,7 +21,13 @@ export default {
   getPlayListByWhere (cat, order, offset, total, limit) {
     return _url3 + '?type=topPlayList&cat=' + cat + '&offset=' + offset + '&limit=' + limit;
   },
+  // getSong (id) {
+  //   return _url2 + '?type=song&id=' + id;
+  // }
   getSong (id) {
-    return _url2 + '?type=song&id=' + id;
+    return _url + 'music/url?id=' + id;
+  },
+  getLrc (id) {
+    return _url + 'lyric?id=' + id;
   }
 };
