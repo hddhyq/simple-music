@@ -7,7 +7,16 @@
 
 技术方面还是vue全家桶，后来学习了下黄老师的音乐播放WebApp才发现差距还真的是很大。
 
+api接口请求需要[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi/#/)
+
+```sh
+git clone https://github.com/Binaryify/NeteaseCloudMusicApi.git
+npm install
+node app.js
+```
+
 ### 歌曲详情界面
+
 ![](https://github.com/hddhyq/simple-music/raw/master/printScreens/songList.png)
 
 这里下拉加载功能还是实现了的。每次请求６个界面
@@ -27,7 +36,10 @@
 
 ### 用户登录和用户界面
 登录功能是完成了，当时很简陋，密码和账号直接上传的，什么认证都没有，连用Base64编码一下都没有，摘要认证之类的也不了解。
+
+
 ![](https://github.com/hddhyq/simple-music/raw/master/printScreens/login.png)
+
 
 ![](https://github.com/hddhyq/simple-music/raw/master/printScreens/user.png)
 
